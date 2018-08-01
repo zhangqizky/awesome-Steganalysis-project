@@ -10,6 +10,7 @@ Forensics and Security (WIFS), International Workshop on Digital Watermarking (I
 ## 基于传统特征的图像隐写分析方法
 ### 概述
 传统的图像通用隐写分析方法一般包括特征提取和训练分类器两个步骤。其中，隐写分析中的特征是对正常图像和载密图像具有区分能力的统计量。而分类器则是机器学习中常用的 SVM、集成分类器(Ensemble Classifier) [1]等可训练优化的类别判别工具。两个步骤中，特征表达是研究中的关键问题，其对检测性能起到决定性的作用。在传统的方法中，特征表达主要依赖于人工设计，且特征设计的基本思想是找到隐写操作前后图像中具有明显差异的统计量
+### 传统特征方法整理
 
 ## 基于深度学习的图像隐写分析方法
 ### 概述
@@ -24,3 +25,16 @@ Forensics and Security (WIFS), International Workshop on Digital Watermarking (I
 2) 目前的通用隐写分析技术仍需要用到隐写算法、嵌入量等先验信息，例如在构建分类器时仍需要与待检测隐写术对应的载密图像进行训练，并不能真正做到“盲”检测。考虑到新的隐写算法层出不穷，因此研究独立于隐写术的通用隐写分析十分重要。
 3) 面向实际应用的隐写分析，特别是社交网络平台大数据环境下的隐写分析研究是一个很值得关注的问题。目前的隐写分析研究大多局限在特定的小规模数据库等实验室条件下。而实际应用环境下隐写分析面临的则是社交网络背景下大数据、异质图像源等复杂的图像数据，实验室条件下取得成功的方法往往很难成功的进行实际应用。目前面向实际应用的隐写分析研究较少，但需求迫切，尚待进一步的研究。
 4) 目前的隐写分析研究目标主要停留在检测隐写存在性这一层次上，而更高层次的定位隐写嵌入位置、提取出隐写信息等目标目前仍没有有效的方法，其也是今后隐写分析需要努力的方向。
+### 一些开源项目和工具
+1. [一个Steganaysis的python工具包](https://github.com/cedricbonhomme/Stegano)
+2. [A steganalysis tool for detecting LSB steganography in images ](https://github.com/b3dk7/StegExpose)
+3. [Least Significant Bit Steganography for bitmap images (.bmp and .png), WAV sound files, and byte sequences. Simple LSB Steganalysis (LSB extraction) for bitmap images.](https://github.com/ragibson/Steganography)
+4. [Image steganalysis using state-of-the-art machine learning techniques](https://github.com/daniellerch/aletheia)
+5. [caffe_deep_learning_for_steganalysis](https://github.com/GuanshuoXu/caffe_deep_learning_for_steganalysis)
+6. [code of our paper entitled: Improving Blind Steganalysis in Spatial Domain using a Criterion to Choose the AppropriateSteganalyzer between CNN and SRM+EC ](https://github.com/rcouturier/steganalysis_with_CNN_and_SRM)
+7. [Audio and image steganalysis with tensorflow1.3 or later](https://github.com/Charleswyt/tf_audio_steganalysis)
+8. [Tensorflow implementation of "Deep Learning Hierarchical Representation for Image Steganalysis" ](https://github.com/Caenorst/YeNet-Tensorflow)
+9. [Machine learning steganographic image detection. ](https://github.com/rokkuran/stegasawus)
+10. [steganalysis_with_CNN_for_same_key_images](https://github.com/rcouturier/steganalysis_with_CNN_for_same_key_images)
+11. [some code for deep steganalysis](https://github.com/jiangszzzzz/CAECNNcode)
+12. [Steganalysis of JPEG images with CUDA optimizations ](https://github.com/id23cat/cujpgstego)
