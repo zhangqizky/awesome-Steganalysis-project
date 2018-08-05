@@ -24,14 +24,25 @@
  该类特征可统称为“富模型” 特征，其中“富”字体现在其通过组合相异的子特征集使得特征可以表达丰富的统计特性。同时该类特 征这些特征在维度上相比于早期的特征有了大幅度的提升,例如下面两种模型，所提取的图像特征均超过了10000维。
 - [SRM (Spatial Rich Model)](http://www.ws.binghamton.edu/fridrich/Research/TIFS2012-SRM.pdf)
 - [PSRM (Projection Spection Rich Model)](https://doi.org/10.1109/TIFS.2013.2286682)
-
+#### 针对富模型的改进
+- [Tang首先提出了利用选择信道信息的自适应隐写分析(Adaptive Steganalysis)，且主要针对的是 WOW 隐写算法](https://doi.org/10.1145/2600918.2600935)
+主要针对的是 WOW 隐写算法。其思想是首先从图像中筛选出可疑区域，然后只从可疑区域中提特征。筛选可疑区域 的方式是首先用 WOW 算法中的方法计算每个像素的嵌入代价(embedding cost) ρij，ρij 越小表示该像素被 修改的概率越大。通过一定的比例 p 选出 ρij 较小的像素集作为可疑区域，其中 p 为可调参数。最终在筛 选出的可疑区域上计算残差并提取共生矩阵作为特征。该方法对 WOW 的检测相对传统特征提取方式有 了一定的提升。
+- [Denemark 等[21]在 Tang 等工作的基础上提出了一种新的通用的自适应隐写分析特征](https://doi.org/10.1109/wifs.2014.7084302)
+该方法所提的 特征可看成是传统 Rich Model 的变体。提特征所用到的残差、量化截短等操作均与传统 Rich Model 中的 相同。不同点在于共生矩阵的计算。传统 Rich Model 在从残差上计算四维共生矩阵时，同等的看待每个 四元组(d1, d2, d3, d4)的贡献，即每次四元组出现时对应的共生矩阵中的 bin 值加 1，其中 d1, d2, d3, d4 为残 差图像中的元素。而该文的作者认为应当对图像中每个元素对最终特征的贡献有所区分，修改概率大的 位置应赋予更大的权重。该方法中，每次四元组出现时，对应的共生矩阵中的 bin 值加四元组元素对应 的修改概率 βij 的最大值，其中 βij 是根据相应隐写术中的计算方式得到。该方法相比 HUGO、WOW、 SUNIWARD 等自适应隐写术的检测效果较传统方法都有所提升。
 ## 基于深度学习的图像隐写分析方法
 ### 概述
 虽然基于人工设计特征的通用隐写分析技术近些年取得发展较快，但仍面临诸多困难及挑战。首先，人工设计特征是一种非常费力、启发式的方法，有效特征的设计选取更多的依赖于人的经验，且需要花费大量的时间精力。其次，作为互相对抗的两种技术，在隐写分析发展的同时，隐写术也在不断地进步。新型的隐写术层出不穷，且新提出的隐写术往往可以保持图像中更复杂的统计特性，这也给隐写分析提出了越来越高的要求。为了进行有效的检测，隐写分析特征也需要考虑更复杂的统计特性，特征设计难度不断加大。
 
 ### 深度学习的方法整理
 - [2015年的Deep learning for steganalysis via convolutional neural networks](http://xueshu.baidu.com/s?wd=paperuri%3A%281c85f9edc52b10af1f6157d44667da57%29&filter=sc_long_sign&tn=SE_xueshusource_2kduw22v&sc_vurl=http%3A%2F%2Fadsabs.harvard.edu%2Fcgi-bin%2Fnph-data_query%3Fbibcode%3D2015SPIE.9409E..0JQ%26amp%3Bdb_key%3DPHY%26amp%3Blink_type%3DABSTRACT%26amp%3Bhigh%3D567107244204418&ie=utf-8&sc_us=10775830153732577606)。
-- 
+- [Pibre等提出了一 种新的基于适应于隐写分析的 CNN 的网络结构模型Deep Learning is a Good Steganalysis Tool when Embed- ding Key is Reused for Different Images, even if there is a Cover Source-Mismatch](http://www.lirmm.fr/~chaumont/publications/IST_ELECTRONIC_IMAGING_Media_Watermarking_Security_Forensics_2016_PIBRE_PASQUET_IENCO_CHAUMONT_Deep_Learning_Artificial_Experimental_Protocol_Slides.pdf)
+- [Structural Design of Convolutional Neural Networks for Steganalysis](https://doi.org/10.1109/LSP.2016.2548421)
+- 迁移学习，针对低嵌入率图像
+[Learning and Transferring Representations for Image Steganalysis Using Convolutional Neural Network](https://doi.org/10.1109/ICIP.2016.7532860)
+- 正则化，利用传统特征
+[Learning Representations for Steganalysis from Regularized CNN Model with Auxiliary Tasks.](http://ir.ia.ac.cn/handle/173211/12307)
+- 不同模型融合
+[Ensemble of CNNs for Steganalysis: an Empirical Stud](https://doi.org/10.1145/2909827.2930798)
 
 
 ### 目前研究重点和展望
